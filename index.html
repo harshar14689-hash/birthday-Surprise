@@ -1,204 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+<title>Happy Birthday My Love ❤️</title>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
-  font-family: Arial, sans-serif;
-  text-align: center;
-  color: white;
+body{
+    margin:0;
+    text-align:center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    overflow-x:hidden;
+    color:white;
 }
 
-.container {
-  position: relative;
-  z-index: 2;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* Main Entrance */
+.main-message{
+    font-size:28px;
+    margin-top:40px;
+    animation: fadeIn 3s ease-in-out;
 }
 
-h1 {
-  font-size: 22px;
-  margin-bottom: 20px;
+/* Countdown */
+#countdown{
+    font-size:24px;
+    margin-top:20px;
 }
 
-/* 🎂 Cake */
-.cake {
-  position: relative;
-  width: 200px;
-  height: 120px;
-  background: #fff;
-  border-radius: 10px;
+/* Cake (smaller) */
+.cake{
+    position:relative;
+    width:150px;
+    height:120px;
+    background:#ff4d6d;
+    margin:40px auto;
+    border-radius:10px;
 }
 
-.layer {
-  position: absolute;
-  width: 200px;
-  height: 40px;
-  background: #ff4e8b;
-  border-radius: 10px;
+.candle{
+    width:10px;
+    height:40px;
+    background:white;
+    position:absolute;
+    top:-40px;
+    left:70px;
 }
 
-.layer1 { bottom: 0; }
-.layer2 { bottom: 40px; background: #ff85a2; }
-.layer3 { bottom: 80px; background: #ffc0cb; }
-
-/* 🕯 Candles */
-.candle {
-  position: absolute;
-  width: 10px;
-  height: 30px;
-  background: white;
-  top: -30px;
-  cursor: pointer;
+.flame{
+    width:15px;
+    height:15px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-55px;
+    left:67px;
+    animation:flicker 0.5s infinite alternate;
 }
 
-.flame {
-  position: absolute;
-  top: -15px;
-  left: 2px;
-  width: 6px;
-  height: 15px;
-  background: orange;
-  border-radius: 50%;
-  animation: flicker 0.3s infinite alternate;
+@keyframes flicker{
+    from{transform:scale(1);}
+    to{transform:scale(1.2);}
 }
 
-@keyframes flicker {
-  from { transform: scale(1); opacity: 1; }
-  to { transform: scale(1.2); opacity: 0.8; }
+/* Romantic Button */
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:#ff3366;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    margin:20px;
 }
 
-/* ❤️ Floating Hearts */
-.heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: red;
-  transform: rotate(45deg);
-  animation: floatUp 6s linear infinite;
-}
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: red;
-  border-radius: 50%;
-}
-.heart::before { top: -10px; left: 0; }
-.heart::after { left: -10px; top: 0; }
-
-@keyframes floatUp {
-  0% { bottom: -20px; opacity: 1; }
-  100% { bottom: 100vh; opacity: 0; }
+/* Love Letter Popup */
+.popup{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#ff3366;
+    padding:25px;
+    border-radius:15px;
+    width:80%;
+    max-width:350px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
-/* 🎆 Fireworks */
-.firework {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: yellow;
-  border-radius: 50%;
-  animation: explode 1s ease-out forwards;
+/* Photos */
+.gallery img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:15px;
+    margin:10px;
 }
-@keyframes explode {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(8); opacity: 0; }
+
+/* Fireworks */
+.firework{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:yellow;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    to{
+        transform:scale(20);
+        opacity:0;
+    }
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>🎂 Happy Birthday my dear friend,<br>of my life ❤️</h1>
-
-  <div class="cake">
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-
-    <!-- Candles -->
-    <div class="candle" style="left:40px;" onclick="blow(this)">
-      <div class="flame"></div>
-    </div>
-
-    <div class="candle" style="left:90px;" onclick="blow(this)">
-      <div class="flame"></div>
-    </div>
-
-    <div class="candle" style="left:140px;" onclick="blow(this)">
-      <div class="flame"></div>
-    </div>
-  </div>
+<div class="main-message">
+Happy Birthday my dear friend, of my life ❤️
 </div>
 
-<!-- 🎵 Music -->
-<audio id="bgMusic" loop>
-  <source src="your-music.mp3" type="audio/mpeg">
-</audio>
+<div id="countdown"></div>
 
-<!-- 🔊 Click Sound -->
-<audio id="clickSound">
-  <source src="click.mp3" type="audio/mpeg">
-</audio>
+<div class="cake">
+    <div class="candle"></div>
+    <div class="flame"></div>
+</div>
+
+<button onclick="openLetter()">Open My Love Letter 💌</button>
+
+<div class="popup" id="loveLetter">
+<h3>My Love ❤️</h3>
+<p>
+You are the most beautiful part of my life.  
+Every moment with you feels magical.  
+I promise to stay with you forever.  
+Happy Birthday My Queen 👑
+</p>
+<button onclick="closeLetter()">Close</button>
+</div>
+
+<h2>Our Memories 📸</h2>
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="clickSound" src="click.mp3"></audio>
 
 <script>
-const clickSound = document.getElementById("clickSound");
-const bgMusic = document.getElementById("bgMusic");
-
-/* 🔊 Click sound everywhere */
-document.addEventListener("click", function() {
-  clickSound.currentTime = 0;
-  clickSound.play();
+// Background music on first click
+document.body.addEventListener("click", function(){
+    document.getElementById("bgMusic").play();
 });
 
-/* Start music on first tap */
-document.body.addEventListener("click", function() {
-  bgMusic.play();
-}, { once: true });
+// Click sound
+document.addEventListener("click", function(){
+    document.getElementById("clickSound").play();
+});
 
-/* Blow candle */
-function blow(candle) {
-  const flame = candle.querySelector(".flame");
-  if (flame) {
-    flame.remove();
-  }
+// Countdown (SET HER BIRTHDAY DATE BELOW)
+var birthday = new Date("March 10, 2026 00:00:00").getTime();
+
+var x = setInterval(function(){
+    var now = new Date().getTime();
+    var distance = birthday - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+    "Countdown: " + days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    if(distance < 0){
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "It's Her Special Day! 🎉";
+    }
+},1000);
+
+// Popup
+function openLetter(){
+    document.getElementById("loveLetter").style.display="block";
 }
 
-/* Floating hearts */
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.bottom = "-20px";
-  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
+function closeLetter(){
+    document.getElementById("loveLetter").style.display="none";
 }
-setInterval(createHeart, 400);
 
-/* Fireworks */
-function createFirework() {
-  const firework = document.createElement("div");
-  firework.classList.add("firework");
-  firework.style.left = Math.random() * 100 + "vw";
-  firework.style.top = Math.random() * 80 + "vh";
-  document.body.appendChild(firework);
-  setTimeout(() => firework.remove(), 1000);
-}
-setInterval(createFirework, 800);
+// Fireworks
+setInterval(function(){
+    var fw = document.createElement("div");
+    fw.className="firework";
+    fw.style.top=Math.random()*window.innerHeight+"px";
+    fw.style.left=Math.random()*window.innerWidth+"px";
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
+},800);
 </script>
 
 </body>
